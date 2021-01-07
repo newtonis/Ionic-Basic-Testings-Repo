@@ -1,0 +1,8 @@
+{
+  "name": "GoogleLoginExample",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

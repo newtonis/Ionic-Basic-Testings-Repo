@@ -1,0 +1,13 @@
+{
+  "appId": "com.GoogleSignInTestProject",
+  "appName": "GoogleLoginExample",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GoogleLoginExample</string>
+    <string name="title_activity_main">GoogleLoginExample</string>
+    <string name="package_name">com.GoogleSignInTestProject</string>
+    <string name="custom_url_scheme">com.GoogleSignInTestProject</string>
+</resources>

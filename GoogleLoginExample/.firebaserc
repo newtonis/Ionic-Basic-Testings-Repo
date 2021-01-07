@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "websitetest-225ca": {
+      "hosting": {
+        "app": [
+          "websitetest-225ca"
+        ]
+      }
+    }
+  }
+}
