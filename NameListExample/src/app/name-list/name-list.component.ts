@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Person } from '../types';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Input, Output } from '@angular/core';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 
 @Component({
@@ -11,11 +12,25 @@ import { Input, Output } from '@angular/core';
 })
 export class NameListComponent implements OnInit {
 
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   @Input() personData: Observable<Person[]>; // all persons
-  @Output() personOutput: Observable<Person[]>; // selected persons in list
+  @Output() personOutput: Observable< {[id: string]: boolean;} >; // selected persons in list
 
-  constructor() {}
+  personSubject: BehaviorSubject<{[id: string]: boolean;}> = new BehaviorSubject({});
+  dataSelected: {[id: string]: boolean} = {};
 
-  ngOnInit() {}
+  constructor() {
+    this.personOutput = this.personSubject.asObservable();
+  }
 
+  ngOnInit() {
+    // to check new data
+    this.personData.subscribe(data => {
+ 
+    });
+  }
+  ionChange(checked: boolean, person : Person){
+    this.dataSelected[person.id] = checked;
+    this.personSubject.next(this.dataSelected); // we updated selected names
+  }
 }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { DbService } from '../db.service';
+import { Observable } from 'rxjs';
+import { Person } from '../types';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor() {}
+  
+  peopleData : Observable<Person[]>;
+  
+  constructor(private dbService : DbService) {
+    this.dbService.loadCollection("ExampleTimetable");
+    this.peopleData = this.dbService.getUsersData();
+  }
 
 }
