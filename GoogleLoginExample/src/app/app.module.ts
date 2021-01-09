@@ -14,6 +14,7 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { firebaseConfig } from './firebase-config';
 
@@ -29,7 +30,10 @@ import firebase from 'firebase';
     AngularFireModule.initializeApp(firebaseConfig, "angular-auth-firebase"),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   providers: [
     StatusBar,

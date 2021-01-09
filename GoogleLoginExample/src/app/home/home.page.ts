@@ -8,7 +8,6 @@ import firebase from 'firebase';
 import { auth } from 'firebase/app';
 
 import {Platform} from '@ionic/angular';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-home',
