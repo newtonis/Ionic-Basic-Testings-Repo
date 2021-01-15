@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ECG Monitor
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-button color="secondary" (click)="refreshDevices()">
+      Refresh Bluetooth Devices
+    </ion-button>
+
+    <div *ngFor="let device of listDevicesKeys">
+      <ion-button (click)="deviceSelected(device)">
+        {{this.devices[device].name}}
+      </ion-button>
+    </div>
+  </div>
+  <div *ngFor="let m of msgs">
+    {{m}}
+  </div>
+
+</ion-content>
