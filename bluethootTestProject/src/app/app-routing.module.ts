@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'graphics',
+    loadChildren: () => import('./graphics/graphics.module').then( m => m.GraphicsPageModule)
   },
+
 ];
 
 @NgModule({
