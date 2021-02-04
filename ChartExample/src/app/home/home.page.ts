@@ -44,7 +44,7 @@ export class HomePage {
       },
 
       title: {
-        text: 'Live random data'
+        text: 'Electrocardiogram'
       },
       xAxis: {
         type: 'datetime',
@@ -115,7 +115,7 @@ export class HomePage {
       },
 
       title: {
-        text: 'Live random data'
+        text: 'Oxygen Saturation'
       },
       xAxis: {
         type: 'datetime',

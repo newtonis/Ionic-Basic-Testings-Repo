@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { VitalSignsBarComponent } from '../vital-signs-bar/vital-signs-bar.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { HomePageRoutingModule } from './home-routing.module';
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, VitalSignsBarComponent]
 })
 export class HomePageModule {
 }

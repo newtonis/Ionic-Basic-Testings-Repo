@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      ECG Analysis
+      Vital Signs Monitor
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,37 +9,15 @@
 <ion-content [fullscreen]="true" class="full-container">
   <ion-slides>
     <ion-slide class="content">
-      <div class="num-container">
-        <div class='num'>
-          HR
-        </div>
-        <div class='num'>
-          01
-        </div>
-        <div class='num'>
-          Temperature
-        </div>
-        <div class='num'>
-          36.8 °C
-        </div>
-      </div>
+
+      <app-vital-signs-bar></app-vital-signs-bar>
+
+
       <div class="plot" id="dynamicSpline" style="width:100%; height:400px;"></div>
     </ion-slide>
     <ion-slide class="content">
-      <div class="num-container">
-        <div class='num'>
-          PR
-        </div>
-        <div class='num'>
-          02
-        </div>
-        <div class='num'>
-          BPM
-        </div>
-        <div class='num'>
-          82.34%
-        </div>
-      </div>
+      <app-vital-signs-bar></app-vital-signs-bar>
+
       <div class="plot" id="dynamicSpline2" style="width:100%; height:400px;"></div>
     </ion-slide>
   </ion-slides>
