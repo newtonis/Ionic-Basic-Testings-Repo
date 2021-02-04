@@ -1,0 +1,71 @@
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+  #container a {
+    text-decoration: none;
+  }
+  .full-container{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+  }
+  
+  .halfwidth{
+    width: 50%;
+    text-align: center;
+    padding:10px;
+  }
+  .fullwidth{
+    width:100%;
+    text-align: center;
+    padding:10px;
+  }
+  .slide{
+    width:100%;
+  }
+  .demo-chart{ 
+    height:50%;
+    width:90%;
+  }
+  .num-container{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100%;
+    height:50px;
+    
+    border: 1px solid #000000;
+  }
+  .plot{
+    border: 1px solid #000000;
+  }
+  .content{
+    display:flex;
+    flex-direction: column;
+  }
+  .num{
+    padding:5px;
+  }
+  .plot-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  :host{
+      width: 80%;
+  }

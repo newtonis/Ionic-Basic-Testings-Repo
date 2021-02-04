@@ -1,0 +1,27 @@
+<div class="num-container">
+  <div class='num'>
+    HR 
+  </div>
+
+  <div *ngIf="this.currVitalSigns.heartRate">
+    <div class='num'>
+      <!-- console.log(this.currVitalSigns.heartRate) -->
+      <!-- hoalaaasdasdsa -->
+      <!-- {{this.currvitalSigns.heartRate}} bpm -->
+      {{this.vitalSignService.getVitalSigns().heartRate}} bpm
+    </div>
+  </div>
+
+  <div class='num'>
+    Temperature
+  </div>
+  <div class='num'>
+    <!-- {{this.currvitalSigns.temperature}} °C -->
+  </div>
+  <div class='num'>
+    SPO2
+  </div>
+  <div class='num'>
+    <!-- {{this.currvitalSigns.oxygenSaturation}} % -->
+  </div>
+</div>

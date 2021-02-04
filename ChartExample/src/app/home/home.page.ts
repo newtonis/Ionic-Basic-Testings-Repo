@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as HighCharts from 'highcharts';
 
 
 @Component({
@@ -12,92 +13,154 @@ export class HomePage {
   options: any;
   updateOptions: any;
 
-  private oneDay = 24 * 3600 * 1000;
-  private now: Date;
-  private value: number ;
-  private data: any[];
-  private timer: any;
-
   constructor() { }
 
-  ngOnInit(): void {
-    // generate some random testing data:
-    this.data = [];
-    this.now = new Date(1997, 9, 3);
-    this.value = Math.random() * 1000;
+  ionViewDidEnter() {
+    this.plotDynamicSplineChart();
+  }
 
-    for (let i = 0; i < 1000; i++) {
-      this.data.push(this.randomData());
-    }
+  plotDynamicSplineChart() {
+    let myChart2 = HighCharts.chart('dynamicSpline2', {
+      chart: {
+        type: 'spline',
+        animation: true, // don't animate in old IE
+        marginRight: 10,
+        events: {
+          load: function () {
 
-    // initialize chart options:
-    this.options = {
-      title: {
-        text: 'Dynamic Data + Time Axis'
-      },
-      tooltip: {
-        trigger: 'axis',
-        formatter: (params) => {
-          params = params[0];
-          const date = new Date(params.name);
-          return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-        },
-        axisPointer: {
-          animation: false
+            // set up the updating of the chart each second
+            var series = this.series[0];
+            setInterval(function () {
+              var x = (new Date()).getTime(), // current time
+                y = Math.random();
+              series.addPoint([x, y], true, true);
+            }, 1000);
+          }
         }
+      },
+
+      time: {
+        useUTC: false
+      },
+
+      title: {
+        text: 'Electrocardiogram'
       },
       xAxis: {
-        type: 'time',
-        splitLine: {
-          show: false
-        }
+        type: 'datetime',
+        tickPixelInterval: 150
       },
       yAxis: {
-        type: 'value',
-        boundaryGap: [0, '100%'],
-        splitLine: {
-          show: false
-        }
+        title: {
+          text: 'Value'
+        },
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
+      },
+      tooltip: {
+        headerFormat: '<b>{series.name}</b><br/>',
+        pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+      },
+      legend: {
+        enabled: false
+      },
+      exporting: {
+        enabled: false
       },
       series: [{
-        name: 'Mocking Data',
-        type: 'line',
-        showSymbol: false,
-        hoverAnimation: false,
-        data: this.data
+        name: 'Random data',
+        type: undefined,
+        data: (function () {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
+
+          for (i = -19; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: Math.random()
+            });
+          }
+          return data;
+        }())
       }]
-    };
 
-    // Mock dynamic data:
-    this.timer = setInterval(() => {
-      for (let i = 0; i < 5; i++) {
-        this.data.shift();
-        this.data.push(this.randomData());
-      }
+    });
 
-      // update series data:
-      this.updateOptions = {
-        series: [{
-          data: this.data
+    let myChart = HighCharts.chart('dynamicSpline', {
+      chart: {
+        type: 'spline',
+        animation: true, // don't animate in old IE
+        marginRight: 10,
+        events: {
+          load: function () {
+
+            // set up the updating of the chart each second
+            var series = this.series[0];
+            setInterval(function () {
+              var x = (new Date()).getTime(), // current time
+                y = Math.random();
+              series.addPoint([x, y], true, true);
+            }, 1000);
+          }
+        }
+      },
+
+      time: {
+        useUTC: false
+      },
+
+      title: {
+        text: 'Oxygen Saturation'
+      },
+      xAxis: {
+        type: 'datetime',
+        tickPixelInterval: 150
+      },
+      yAxis: {
+        title: {
+          text: 'Value'
+        },
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
         }]
-      };
-    }, 1000);
-  }
+      },
+      tooltip: {
+        headerFormat: '<b>{series.name}</b><br/>',
+        pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+      },
+      legend: {
+        enabled: false
+      },
+      exporting: {
+        enabled: false
+      },
+      series: [{
+        name: 'Random data',
+        type: undefined,
+        data: (function () {
+          // generate an array of random data
+          var data = [],
+            time = (new Date()).getTime(),
+            i;
 
-  ngOnDestroy() {
-    clearInterval(this.timer);
-  }
+          for (i = -19; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: Math.random()
+            });
+          }
+          return data;
+        }())
+      }]
 
-  randomData() {
-    this.now = new Date(this.now.getTime() + this.oneDay);
-    this.value = this.value + Math.random() * 21 - 10;
-    return {
-      name: this.now.toString(),
-      value: [
-        [this.now.getFullYear(), this.now.getMonth() + 1, this.now.getDate()].join('/'),
-        Math.round(this.value)
-      ]
-    };
+    });
   }
 
 }
